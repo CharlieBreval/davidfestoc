@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="page-gallery">
+  <div class="section">
+    <div class="container-fluid">
+          <!-- photo gallery -->
+      <div class="row">
+        <div id="grid-gallery">
+          {% for painting in paintings %}
+            <div class="grid-item publications" data-src="{{ asset(painting.image) }}">
+              <img src="{{ asset(painting.thumbnail) }}" alt="">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!--/.page-gallery -->
+
+{% endblock %}
