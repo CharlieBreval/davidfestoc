@@ -73,14 +73,6 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-# Swiftmailer Configuration
-swiftmailer:
-    transport: gmail
-    host:      "%mailer_host%"
-    username:  charliebreval@gmail.com
-    password:  "%mailer_password%"
-    spool:     { type: memory }
-
 fos_user:
     db_driver: orm
     firewall_name: main
