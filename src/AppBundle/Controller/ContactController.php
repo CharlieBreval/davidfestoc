@@ -29,7 +29,7 @@ class ContactController extends Controller
         }
 
 
-        return $this->render('AppBundle:Contact:index.html.twig', [
+        return $this->render('AppBundle:contact-form:contact.html.twig', [
             'success' => $success
         ]);
     }
