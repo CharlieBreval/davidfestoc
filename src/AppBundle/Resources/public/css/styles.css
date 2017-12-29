@@ -1,0 +1,26 @@
+.home-gallery .logo a, .classic-menu .logo a{
+    background-image:url('/bundles/app/img/logo.png');
+}
+.slide-title{
+    height:50px;
+    position:absolute;
+    width:200px;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 300px;
+    color: white;
+    letter-spacing: normal;
+}
+
+.slide-title a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 13px 15px;
+    border: 1px solid white;
+    width: 108px;
+    margin: auto;
+    text-transform: uppercase;
+}

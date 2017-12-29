@@ -9,13 +9,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <p class="logo"><a class="navbar-brand open-home" href="#">Project name</a></p>
+      <p class="logo"><a class="navbar-brand open-home" href="{{ path('app_home') }}">Project name</a></p>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li {% if currentRoute == 'app_home' %} class="active"{% endif %}><a href="{{ path('app_home') }}">Home</a></li>
-        <li {% if currentRoute == 'app_gallery' %} class="active"{% endif %}><a href="{{ path('app_gallery') }}" data-layer="page-gallery">Gallery</a></li>
-        <li {% if currentRoute == 'app_contact' %} class="active"{% endif %}><a href="{{ path('app_contact') }}" data-layer="page-contact">Contact</a></li>
+        <li {% if currentRoute == 'app_home' %} class="active"{% endif %}><a href="{{ path('app_home') }}">{{ 'Home'|trans }}</a></li>
+        <li {% if currentRoute == 'app_gallery' %} class="active"{% endif %}><a href="{{ path('app_gallery') }}" data-layer="page-gallery">{{ 'Gallery'|trans }}</a></li>
+        <li {% if currentRoute == 'app_contact' %} class="active"{% endif %}><a href="{{ path('app_contact') }}" data-layer="page-contact">{{ 'Contact'|trans }}</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->

@@ -9,28 +9,36 @@
           <div class="content-section">
             <div>
               <h3>Contactez-moi</h3>
-              <p class="subtitle">Et harum quidem rerum facilis est et expedita distinctio.</p>
               <ul class="address">
-                <li>Tel.: +626 460 4061</li>
-                <li>Adress : 55 rue Bellamy</li>
-                <li>Email : david@festoc.com</li>
+                <li>DAVID FESTOC</li>
+                <li>Nantes</li>
+                <li>Email : david.festoc@laposte.net</li>
               </ul>
+
 
               <form action="{{ path('app_contact') }}" method="post" id="contactform" class="contact-form">
 
+                {{ form_errors(form)}}
+                {{ form_row(form._token) }}
+
                 <div class="form-group">
                   <label class="title small" for="email">E-mail</label>
-                  <input type="email" placeholder="E-mail" name="email" id="email" class="text email required">
+                  <input type="email" placeholder="E-mail" required="required" name="form[email]" id="email" class="text email required">
                 </div>
                 <div class="form-group">
                   <label class="title small" for="message">Type your message</label>
-                  <textarea placeholder="Type your message" name="message" id="message" class="text area required" ></textarea>
+                  <textarea placeholder="Type your message" required="required" name="form[message]" id="message" class="text area required" ></textarea>
                 </div>
 
                 {% if success == true %}
                   <div class="formSent"><p><strong>Your Message Has Been Sent!</strong> Thank you for contacting us.</p></div>
                 {% endif %}
-                <input type="submit" value="Submit" class="btn rounded">
+
+                {% if error == true %}
+                  <div class="formSent"><p><strong>Error ! Be sure to fill all the fields. </strong></p></div>
+                {% endif %}
+
+                <input type="submit" value="{{ 'Submit'|trans }}" class="btn rounded">
               </form>
             </div>
           </div>
@@ -38,7 +46,7 @@
         <div class="col-sm-6">
           <div class="content-section">
             <div>
-              <img src="{{ asset('img/uploads/Rembrandt_-_Portrait_of_Nicolaes_Ruts.jpg') }}">
+              <img src="{{ asset('bundles/app/img/55_le_champs_jaune.jpg') }}">
             </div>
           </div>
         </div>

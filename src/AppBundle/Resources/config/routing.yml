@@ -1,18 +1,18 @@
 app_home:
     path:      /{_locale}
-    defaults:  { _controller: AppBundle:Home:index, _locale: en}
+    defaults:  { _controller: AppBundle:Home:index, _locale: fr}
     requirements:
         _locale: en|fr
 
 app_gallery:
     path:      /{_locale}/gallery
-    defaults:  { _controller: AppBundle:Gallery:index, _locale: en}
+    defaults:  { _controller: AppBundle:Gallery:index, _locale: fr}
     requirements:
         _locale: en|fr
 
 
 app_contact:
     path:      /{_locale}/contact
-    defaults:  { _controller: AppBundle:Contact:index, _locale: en}
+    defaults:  { _controller: AppBundle:Contact:index, _locale: fr}
     requirements:
         _locale: en|fr

@@ -4,6 +4,9 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends Controller
@@ -11,26 +14,43 @@ class ContactController extends Controller
     public function indexAction(Request $request)
     {
         $success = false;
-        if ($request->getMethod() === 'POST') {
+        $error = false;
 
-            $body = '<html><body>'.nl2br($request->request->get('message'))."</body></html>";
+        $form = $this->createFormBuilder()
+            ->add('email', EmailType::class, array(
+                'required' => true
+            ))
+            ->add('message', TextType::class, array(
+                'required' => true
+            ))
+        ->getForm();
 
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Contact from davidfestoc.com')
-                ->setFrom($request->request->get('email'))
-                ->setTo('charliebreval@yahoo.fr')
-                ->setBody($body,'text/html')
-            ;
-            $mailStatus = $this->get('mailer')->send($message);
+        $form->handleRequest($request);
 
-            if($mailStatus) {
-                $success = true;
+        if ($form->isSubmitted()) {
+            if ($form->isValid() && $form->get('email')->getData() !== null) {
+                $body = '<html><body>'.nl2br($request->request->get('message'))."</body></html>";
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Contact from davidfestoc.com by '.$request->request->get('email'))
+                    ->setFrom($request->request->get('email'))
+                    ->setTo('david.festoc@laposte.net')
+                    ->setBody($body,'text/html')
+                ;
+                $mailStatus = $this->get('mailer')->send($message);
+
+                if($mailStatus) {
+                    $success = true;
+                }
+            } else {
+                $error = true;
             }
         }
 
-
         return $this->render('AppBundle:contact-form:contact.html.twig', [
-            'success' => $success
+            'form' => $form->createView(),
+            'success' => $success,
+            'error' => $error
         ]);
     }
 }
