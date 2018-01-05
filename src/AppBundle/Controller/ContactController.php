@@ -36,7 +36,7 @@ class ContactController extends Controller
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Contact from davidfestoc.com by '.$form->get('email')->getData())
                     ->setFrom('bonjour@charliebreval.com')
-                    ->setTo('davidfestoc@laposte.net')
+                    ->setTo('david.festoc@laposte.net')
                     ->setBody($body,'text/html')
                 ;
 
