@@ -29,14 +29,17 @@ class ContactController extends Controller
 
         if ($form->isSubmitted()) {
             if ($form->isValid() && $form->get('email')->getData() !== null) {
-                $body = '<html><body>'.nl2br($request->request->get('message'))."</body></html>";
+                $body = '<html><body>';
+                $body .= 'Message from '.$form->get('email')->getData().'<br><br>';
+                $body .= nl2br($form->get('message')->getData()).'</body></html>';
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Contact from davidfestoc.com by '.$request->request->get('email'))
-                    ->setFrom($request->request->get('email'))
-                    ->setTo('david.festoc@laposte.net')
+                    ->setSubject('Contact from davidfestoc.com by '.$form->get('email')->getData())
+                    ->setFrom('bonjour@charliebreval.com')
+                    ->setTo('davidfestoc@laposte.net')
                     ->setBody($body,'text/html')
                 ;
+
                 $mailStatus = $this->get('mailer')->send($message);
 
                 if($mailStatus) {
