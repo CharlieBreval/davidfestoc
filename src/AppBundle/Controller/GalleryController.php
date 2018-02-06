@@ -12,7 +12,7 @@ class GalleryController extends Controller
     {
         $paintings = $this->getDoctrine()->getManager()->getRepository('AdminBundle:Painting')->findBy([], [
             'createdAt' => 'DESC',
-        ], 10);
+        ]);
 
         return $this->render('AppBundle:Gallery:index.html.twig', [
             'paintings' => $paintings
